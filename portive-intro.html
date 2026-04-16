@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portive - Intro Piece (v4)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  /* Design tokens - Section 7 of intro-piece-bible.md - do not modify */
+  :root {
+    --bg-dark: #1A1A2E;
+    --card-dark: #2D2B3A;
+    --accent-teal: #00BFA5;
+    --bg-light: #F5F5F0;
+    --card-light: #FFFFFF;
+    --text-white: #FFFFFF;
+    --text-grey-light: #C8C8CC;
+    --text-dark: #1A1A2E;
+    --text-dark-body: #3A3A42;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Inter', Calibri, Arial, sans-serif;
+    color: var(--text-dark-body);
+    background: var(--bg-dark);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.45;
+  }
+
+  /* ===== MOBILE-FIRST BASE (375px+) ===== */
+
+  .register {
+    background: var(--bg-dark);
+    color: var(--text-white);
+    padding: 2.5rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .wordmark {
+    font-weight: 900;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    color: var(--text-white);
+    line-height: 1;
+  }
+
+  .tagline {
+    margin-top: 0.75rem;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--accent-teal);
+    line-height: 1.25;
+  }
+
+  .subtagline {
+    margin-top: 0.4rem;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--text-grey-light);
+    line-height: 1.4;
+  }
+
+  .stat-block {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-row {
+    display: block;
+  }
+
+  .stat-label {
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-teal);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .stat {
+    font-weight: 900;
+    font-size: 2.25rem;
+    line-height: 1.05;
+    color: var(--accent-teal);
+  }
+
+  .stat-unit {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-grey-light);
+    margin-top: 0.25rem;
+  }
+
+  .problem-copy {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-grey-light);
+  }
+
+  .problem-copy + .problem-copy {
+    margin-top: 0.5rem;
+  }
+
+  .problem-close {
+    color: var(--text-white);
+    font-weight: 700;
+  }
+
+  .solution-moat {
+    background: var(--bg-light);
+    padding: 2rem 1.5rem;
+  }
+
+  .label {
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-teal);
+    margin-bottom: 0.6rem;
+  }
+
+  .solution-lede {
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 0.9rem;
+  }
+
+  .solution-text {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--text-dark);
+    margin-bottom: 0.9rem;
+  }
+
+  .solution-text strong {
+    color: var(--text-dark);
+    font-weight: 700;
+  }
+
+  .solution-close {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  .moat-lede {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .mech {
+    background: var(--card-light);
+    padding: 1rem 1.1rem;
+    border-top: 3px solid var(--accent-teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .mech-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+
+  .mech-body {
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--text-dark-body);
+  }
+
+  /* ===== Atlantic hero + traction ===== */
+
+  .traction-section {
+    background: var(--bg-light);
+    padding: 0 1.5rem 2rem;
+  }
+
+  .atlantic-hero {
+    background: var(--card-light);
+    border-top: 3px solid var(--accent-teal);
+    padding: 1.1rem 1.2rem 1.25rem;
+    text-align: center;
+    margin-bottom: 1.75rem;
+  }
+
+  .atlantic-label {
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-teal);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .atlantic-logo {
+    max-width: 260px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .traction-list { list-style: none; padding: 0; margin: 0 0 1.5rem 0; }
+
+  .traction-list li {
+    padding: 0.4rem 0 0.4rem 1rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-dark-body);
+    line-height: 1.45;
+  }
+
+  .traction-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.75rem;
+    width: 0.5rem; height: 2px;
+    background: var(--accent-teal);
+  }
+
+  .traction-list strong { color: var(--text-dark); font-weight: 700; }
+
+  .market-card {
+    background: var(--card-light);
+    padding: 1rem 1.1rem;
+    border-top: 3px solid var(--accent-teal);
+  }
+
+  .market-big {
+    font-weight: 900;
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    line-height: 1;
+  }
+
+  .market-sub {
+    font-size: 0.8rem;
+    color: var(--text-dark-body);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  /* ===== Footer: team + playbook + ask ===== */
+
+  .footer-section {
+    background: var(--bg-dark);
+    color: var(--text-white);
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .team-block { margin-bottom: 1.75rem; }
+
+  .team-label {
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-teal);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.9rem;
+  }
+
+  .team-member {
+    text-align: center;
+  }
+
+  .headshot {
+    width: 5.5rem;
+    height: 5.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--accent-teal);
+    margin: 0 auto 0.55rem;
+    display: block;
+  }
+
+  .team-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-white);
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+
+  .team-title {
+    font-size: 0.72rem;
+    color: var(--text-grey-light);
+    line-height: 1.3;
+  }
+
+  .playbook { margin-bottom: 1.5rem; }
+
+  .playbook-label {
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-teal);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .playbook-waves {
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--text-white);
+    line-height: 1.25;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .playbook-waves .arrow { color: var(--accent-teal); padding: 0 0.15rem; }
+
+  .playbook-body {
+    font-size: 0.875rem;
+    color: var(--text-grey-light);
+    line-height: 1.5;
+    display: block;
+  }
+
+  .playbook-body + .playbook-body {
+    margin-top: 0.5rem;
+  }
+
+  .playbook-body strong { color: var(--text-white); font-weight: 700; }
+
+  .ask-block {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 1.5rem;
+  }
+
+  .ask-amount {
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--accent-teal);
+    line-height: 1.1;
+  }
+
+  .ask-why {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--text-grey-light);
+    margin-top: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .cta-block { margin-top: 1.5rem; }
+
+  .cta-link {
+    display: block;
+    background: var(--accent-teal);
+    color: var(--bg-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    min-height: 44px;
+    line-height: 1.3;
+  }
+
+  .contact-line {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-grey-light);
+    text-align: center;
+  }
+
+  /* ===== Tablet/desktop refinements ===== */
+
+  @media (min-width: 414px) {
+    .wordmark { font-size: 2.75rem; }
+    .tagline { font-size: 1.3rem; }
+    .stat { font-size: 2.5rem; }
+    .ask-amount { font-size: 2.25rem; }
+    .team-grid { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    .headshot { width: 4.8rem; height: 4.8rem; }
+  }
+
+  @media (min-width: 768px) {
+    .register { padding: 3rem 2.5rem 2.5rem; min-height: auto; }
+    .wordmark { font-size: 3.5rem; }
+    .tagline { font-size: 1.5rem; }
+    .subtagline { font-size: 1.05rem; }
+    .stat-row { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem 2rem; align-items: start; }
+    .problem-copy { margin-top: 0; }
+    .solution-moat { padding: 2.5rem; }
+    .mechanisms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .mech { margin-bottom: 0; }
+    .traction-section { padding: 0 2.5rem 2.5rem; }
+    .atlantic-hero { margin-bottom: 2rem; padding: 1.25rem 1.5rem 1.4rem; }
+    .atlantic-logo { max-width: 320px; }
+    .traction-market-row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; align-items: start; }
+    .footer-section { padding: 2.5rem; }
+    .team-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .headshot { width: 5.5rem; height: 5.5rem; }
+    .ask-row-tablet { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: end; }
+    .cta-block { margin-top: 0; text-align: right; }
+    .cta-link { display: inline-block; }
+    .contact-line { text-align: right; }
+  }
+
+  @media (min-width: 1024px) {
+    body { background: #888; }
+    .page-wrapper { max-width: 52rem; margin: 2rem auto; box-shadow: 0 6px 40px rgba(0,0,0,0.35); }
+    .register { min-height: auto; padding: 3.5rem 3.5rem 2.5rem; }
+    .wordmark { font-size: 4rem; }
+    .solution-moat { padding: 2.5rem 3.5rem; }
+    .traction-section { padding: 0 3.5rem 2.5rem; }
+    .footer-section { padding: 2.5rem 3.5rem 3rem; }
+  }
+
+  /* ===== Print (8.5x11) ===== */
+
+  @media print {
+    html, body { background: #fff; font-size: 12pt; }
+    @page { size: 8.5in 11in; margin: 0; }
+    .page-wrapper { max-width: none; margin: 0; box-shadow: none; }
+    .register { min-height: auto; padding: 0.22in 0.55in 0.14in; display: block; }
+    .wordmark { font-size: 44pt; }
+    .tagline { font-size: 15pt; margin-top: 0.08in; }
+    .subtagline { font-size: 10.5pt; margin-top: 0.04in; }
+    .stat-block { padding-top: 0.08in; margin-top: 0.08in; }
+    .stat-label { margin-bottom: 0.06in; font-size: 7.5pt; }
+    .stat-row { display: grid; grid-template-columns: 1.9in 1fr; gap: 0.25in; align-items: start; }
+    .stat { font-size: 26pt; }
+    .stat-unit { font-size: 7.5pt; }
+    .problem-copy { font-size: 10.5pt; margin-top: 0; line-height: 1.4; }
+    .problem-copy + .problem-copy { margin-top: 0.06in; }
+    .solution-moat { padding: 0.16in 0.55in 0.14in; }
+    .solution-lede { font-size: 12pt; margin-bottom: 0.05in; }
+    .solution-text { font-size: 10.5pt; margin-bottom: 0.12in; line-height: 1.4; }
+    .moat-lede { font-size: 10.5pt; margin-bottom: 0.06in; }
+    .mechanisms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.13in; }
+    .mech { margin-bottom: 0; padding: 0.09in 0.11in; }
+    .mech-title { font-size: 9.5pt; margin-bottom: 0.03in; }
+    .mech-body { font-size: 8.5pt; line-height: 1.35; }
+    .traction-section { padding: 0 0.55in 0.14in; }
+    .atlantic-hero { padding: 0.08in 0.18in 0.1in; margin-bottom: 0.12in; }
+    .atlantic-label { font-size: 7.5pt; margin-bottom: 0.05in; }
+    .atlantic-logo { max-width: 2.2in; }
+    .traction-market-row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0.22in; align-items: start; }
+    .traction-list li { font-size: 9.5pt; padding: 0.02in 0 0.02in 0.15in; line-height: 1.35; }
+    .traction-list li::before { top: 0.1in; }
+    .market-big { font-size: 20pt; }
+    .market-sub { font-size: 8pt; line-height: 1.35; }
+    .footer-section { padding: 0.12in 0.55in 0.18in; }
+    .team-block { margin-bottom: 0.06in; }
+    .team-label { font-size: 7.5pt; margin-bottom: 0.05in; }
+    .team-grid { grid-template-columns: repeat(4, 1fr); gap: 0.1in; }
+    .headshot { width: 0.6in; height: 0.6in; border-width: 1.5px; margin-bottom: 0.04in; }
+    .team-name { font-size: 8.5pt; margin-bottom: 0.01in; }
+    .team-title { font-size: 7pt; line-height: 1.2; }
+    .playbook { margin-bottom: 0.08in; }
+    .playbook-label { font-size: 7.5pt; margin-bottom: 0.03in; }
+    .playbook-waves { font-size: 12pt; margin-bottom: 0.04in; }
+    .playbook-body { font-size: 8.5pt; line-height: 1.35; }
+    .playbook-body + .playbook-body { margin-top: 0.04in; }
+    .ask-block { padding-top: 0.06in; border-top-width: 0.5px; }
+    .ask-row-tablet { display: grid; grid-template-columns: 1fr auto; gap: 0.25in; align-items: end; }
+    .ask-amount { font-size: 20pt; }
+    .ask-why { font-size: 9pt; margin-top: 0.03in; line-height: 1.3; }
+    .cta-link { background: none; color: var(--accent-teal); font-size: 10pt; padding: 0; display: inline; min-height: auto; border-radius: 0; }
+    .contact-line { font-size: 8.5pt; text-align: right; margin-top: 0.04in; }
+    .cta-block { margin-top: 0; text-align: right; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- SECTION 1: Register zone -->
+  <section class="register">
+    <div class="wordmark">Portive</div>
+    <div class="tagline">Enterprise infrastructure for native mobile codebases.</div>
+    <div class="subtagline">Mission-critical iOS and Android code kept in sync with AI.</div>
+
+    <div class="stat-block">
+      <span class="stat-label">The Two-Platform Tax</span>
+      <div class="stat-row">
+        <div class="stat-left">
+          <div class="stat">$1M+</div>
+          <span class="stat-unit">per year, per team</span>
+        </div>
+        <div class="stat-right">
+          <div class="problem-copy">Enterprise has accepted paying double to build and maintain their mobile products for over a decade. 3,000+ enterprises pay this tax today.</div>
+          <div class="problem-copy"><span class="problem-close">Someone is going to eliminate it.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Solution + Moat -->
+  <section class="solution-moat">
+    <div class="label">Portive's Platform Sync</div>
+    <div class="solution-lede">Eliminates the tax.</div>
+    <div class="solution-text">
+      Portive learns everything about your codebase. From that foundation, it can port code from one platform to the other and prove the translation runs. Now engineers push to one platform. Portive maintains the other.
+    </div>
+    <div class="solution-close">No more paying double.</div>
+
+    <div class="label">Moat</div>
+    <div class="moat-lede">Frontier models can't hold per-customer architectural memory or prove transformed code actually works. Portive does both. Every deployment compounds the gap.</div>
+    <div class="mechanisms-grid">
+      <div class="mech">
+        <div class="mech-title">Per-customer architectural memory</div>
+        <div class="mech-body">A persistent map of how each codebase translates, held per enterprise, growing with every deployment. Only we hold it.</div>
+      </div>
+      <div class="mech">
+        <div class="mech-title">Validation that transformed code actually runs</div>
+        <div class="mech-body">Compilation, behavior, and UI parity verified at the codebase level, not syntactic-only translation.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Atlantic hero + Traction + Market -->
+  <section class="traction-section">
+
+    <div class="atlantic-hero">
+      <span class="atlantic-label">First Enterprise Design Partner</span>
+      <img src="The-Atlantic-logo.png" alt="The Atlantic" class="atlantic-logo">
+    </div>
+
+    <div class="traction-market-row">
+      <div>
+        <div class="label">Traction</div>
+        <ul class="traction-list">
+          <li><strong>First paid pilot signed:</strong> Koodos Shelf Insights, backed by <strong>M13</strong>, <strong>First Round</strong>, and <strong>Evan Sharp</strong>.</li>
+          <li>Platform Porting shipping <strong>10&times; faster</strong> than hand-porting.</li>
+        </ul>
+      </div>
+      <div class="market-card">
+        <div class="label">Market</div>
+        <div class="market-big">$750M+</div>
+        <div class="market-sub">Annual recurring revenue at scale. ~Half of today's Two-Platform Tax spend.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Team + Playbook + Ask -->
+  <section class="footer-section">
+
+    <div class="team-block">
+      <span class="team-label">The Team</span>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="me-head.jpeg" alt="Jeff Namnum" class="headshot">
+          <div class="team-name">Jeff Namnum</div>
+          <div class="team-title">CEO &amp; Co-founder</div>
+        </div>
+        <div class="team-member">
+          <img src="kevin-head.jpeg" alt="Kevin Galligan" class="headshot">
+          <div class="team-name">Kevin Galligan</div>
+          <div class="team-title">CTO &amp; Co-founder</div>
+        </div>
+        <div class="team-member">
+          <img src="peter-head.jpeg" alt="Peter Chislett" class="headshot">
+          <div class="team-name">Peter Chislett</div>
+          <div class="team-title">COO &amp; Co-founder</div>
+        </div>
+        <div class="team-member">
+          <img src="filip-head.jpeg" alt="Filip Dolnik" class="headshot">
+          <div class="team-name">Filip Dolnik</div>
+          <div class="team-title">Lead Engineer, Verification</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="playbook">
+      <span class="playbook-label">The Playbook</span>
+      <span class="playbook-waves">Doppl <span class="arrow">&rarr;</span> SKIE <span class="arrow">&rarr;</span> Portive</span>
+      <span class="playbook-body">We've been fighting the Two-Platform Tax for over a decade. Google built the J2ObjC transpiler. We made it useful for enterprise with Doppl. JetBrains built Kotlin Multiplatform. We made it useful for enterprise with SKIE. Now AI. Same team, third wave.</span>
+      <span class="playbook-body"><strong>The enterprises we sold the last two solutions to are our Phase 2 pipeline.</strong></span>
+    </div>
+
+    <div class="ask-block">
+      <div class="ask-row-tablet">
+        <div>
+          <div class="ask-amount">Raising $2.5M seed</div>
+          <div class="ask-why">to land 3 enterprise pilots, ship Platform Sync v1, and trigger Series A.</div>
+        </div>
+        <div class="cta-block">
+          <a href="#calendly" class="cta-link">Book 30 minutes through May</a>
+          <div class="contact-line">Jeff Namnum, CEO &nbsp;&middot;&nbsp; jeff@portive.ai</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>
