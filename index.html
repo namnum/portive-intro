@@ -2,7 +2,50 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Portive — One-pager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portive — Enterprise infrastructure for native mobile</title>
+  <meta name="description" content="Portive eliminates the Two-Platform Tax: the $3.5M+ per team, per year that mobile orgs have paid for a decade to ship the same app twice. Native iOS and Android, kept in sync automatically. Raising $2.5M, closing August 2026.">
+  <meta name="author" content="Jeff Namnum, Kevin Galligan, Peter Chislett, Filip Dolnik">
+  <meta name="keywords" content="Portive, mobile infrastructure, iOS, Android, Kotlin, Swift, Two-Platform Tax, enterprise mobile, code translation, Touchlab, Doppl, SKIE, Heavybit">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Portive">
+  <meta property="og:title" content="Portive — Enterprise infrastructure for native mobile">
+  <meta property="og:description" content="Native iOS and Android, kept in sync automatically. Portive eliminates the Two-Platform Tax: half of $10B+ annual enterprise mobile spend, the same app built twice.">
+  <meta property="og:url" content="https://portive.ai/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portive — Enterprise infrastructure for native mobile">
+  <meta name="twitter:description" content="Native iOS and Android, kept in sync automatically. Eliminating the $10B+/yr Two-Platform Tax. Raising $2.5M.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Portive",
+    "legalName": "Portive",
+    "url": "https://portive.ai",
+    "email": "jeff@portive.ai",
+    "slogan": "Enterprise infrastructure for native mobile.",
+    "description": "Portive eliminates the Two-Platform Tax — the $3.5M+ per feature team per year that mobile orgs pay to build the same app twice. Engineers push to one platform; Portive maintains the other. Native iOS and Android, kept in sync automatically via a per-enterprise translation graph with compile, behavior, and UI parity validation.",
+    "foundingDate": "2026",
+    "founder": [
+      { "@type": "Person", "name": "Jeff Namnum", "jobTitle": "CEO & Co-founder", "email": "jeff@portive.ai", "affiliation": "Board of Directors, Kotlin Foundation" },
+      { "@type": "Person", "name": "Kevin Galligan", "jobTitle": "CTO & Co-founder", "description": "Inventor of Doppl" },
+      { "@type": "Person", "name": "Peter Chislett", "jobTitle": "COO & Co-founder", "description": "Two tech-cycle exits: Monster (1999), Ricoh (2007)" }
+    ],
+    "employee": [
+      { "@type": "Person", "name": "Filip Dolnik", "jobTitle": "Staff Engineer", "description": "Inventor & Lead Maintainer of SKIE" }
+    ],
+    "knowsAbout": ["iOS", "Android", "Kotlin Multiplatform", "Swift", "Mobile platform engineering", "Code translation", "AI-assisted code synchronization"],
+    "funding": {
+      "@type": "MonetaryGrant",
+      "name": "Seed round",
+      "amount": { "@type": "MonetaryAmount", "currency": "USD", "value": 2500000 }
+    }
+  }
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #faf9f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -19,6 +62,108 @@
   </noscript>
 </head>
 <body>
+  <main id="__seo_content" style="max-width:760px;margin:0 auto;padding:48px 24px;color:#1A1A2E;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.5;">
+    <header>
+      <h1>Portive</h1>
+      <p><strong>Enterprise infrastructure for native mobile.</strong></p>
+      <p>Native iOS and Android, kept in sync automatically. Portive eliminates the Two-Platform Tax: the $3.5M+ per team, per year that mobile orgs have paid for a decade to ship the same app twice.</p>
+      <p><em>Raising $2.5M · Closing August 2026 · Intro deck for Heavybit</em></p>
+    </header>
+
+    <section>
+      <h2>The Two-Platform Tax</h2>
+      <p><strong>$10B+ a year. Half is duplicated spend.</strong></p>
+      <ul>
+        <li>Annual enterprise mobile spend, accepted for over a decade.</li>
+        <li>3,000+ enterprises × $3.5M+ per feature team × every year.</li>
+        <li>Half of it is pure tax: the same app, built twice.</li>
+        <li>Someone is going to eliminate it.</li>
+      </ul>
+      <h3>Why now</h3>
+      <ul>
+        <li><strong>Capability:</strong> Frontier models can now translate production-scale codebases, not just snippets.</li>
+        <li><strong>Budget:</strong> Atlassian, JPMorgan, and Goldman are already cutting engineering headcount on the assumption AI works. Mobile is the redundant line item.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Pattern: a decade on the Two-Platform Tax</h2>
+      <ol>
+        <li><strong>Doppl (2016).</strong> Google built J2ObjC. We built the open-source SDK enterprises needed to ship it.</li>
+        <li><strong>SKIE (2020).</strong> JetBrains built Kotlin Multiplatform. We built the open-source tooling enterprises needed to ship it.</li>
+        <li><strong>Portive (2026, now).</strong> Frontier labs built coding models. We're building the orchestration, the customer-owned memory, and the validation that lets enterprises trust them in production.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Portive's Platform Sync</h2>
+      <p><strong>Engineers push to one platform. Portive maintains the other.</strong> Portive builds a comprehensive map of your codebase, ports code from one platform to the other, and verifies the translation runs: compilation, behavior, and UI parity, verified.</p>
+      <h3>How Platform Sync works</h3>
+      <ul>
+        <li><strong>Push.</strong> Engineer ships to Platform A — iOS or Android, whichever your team owns.</li>
+        <li><strong>Translation graph.</strong> Persistent, customer-owned memory: a per-enterprise translation map that grows with your codebase.</li>
+        <li><strong>Sync.</strong> Platform B stays current. Generates idiomatic Swift/Kotlin that ships in your repo — no runtime bridge between platforms.</li>
+        <li><strong>Auto-PR.</strong> Lands in your repo as a reviewable diff. Your team merges, same workflow they already run.</li>
+        <li><strong>Validation.</strong> Parity verified at every level, not assumed: compile and behavior verified at build time, UI verified via screen-level tests.</li>
+        <li>On every push: graph updates, the other platform re-syncs, parity re-verified.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Moat: why this gets harder to catch</h2>
+      <p>Frontier models can't hold per-enterprise architectural memory, and they can't verify transformed code runs. Portive does both. Every deployment compounds the gap.</p>
+      <h3>1. Memory — Per-enterprise architectural memory</h3>
+      <p>A persistent map of how each codebase translates, held for the customer and growing with every deployment. Only we hold it. <em>Vs. LLM:</em> LLMs re-read the repo every call; we maintain a persistent per-enterprise translation graph that grows with each deployment.</p>
+      <h3>2. Validation — that transformed code runs</h3>
+      <p>Compilation, behavior, and UI parity verified at the codebase level, not a syntactic translation an LLM can bluff. <em>Vs. LLM:</em> "looks right" failures ship to prod.</p>
+      <p><strong>IP:</strong> non-provisional patent in preparation on the synchronization architecture (counsel: Rapacke Law Group). Core processes additionally protected as trade secrets.</p>
+    </section>
+
+    <section>
+      <h2>Roadmap — surface area, Year 1 to Year 3</h2>
+      <ul>
+        <li><strong>Y1 2026 — Platform Sync in production.</strong> iOS ↔ Android continuous sync, deployed in enterprise pilots.</li>
+        <li><strong>Y2 2027 — Multi-target translation graph.</strong> Adding tablet and selected cross-platform pairs (KMP, React Native). Same memory, more leverage.</li>
+        <li><strong>Y3 2028 — The translation graph, sold as infra.</strong> Orchestration, customer-owned memory, and validation, exposed as an enterprise platform.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Traction</h2>
+      <ul>
+        <li><strong>Equity-backed enterprise pilot — The Atlantic.</strong> Piloting Portive on their active mobile rebuild. 12-month engagement; they took a strategic position in Portive. C-suite advisors. Enterprise intros + media.</li>
+        <li><strong>Paid startup pilot — Shelf Insights.</strong> Porting Shelf Insights to Android for international launch. 6-month engagement, just kicked off. Backed by M13 · First Round · Evan Sharp.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Market — half of the tax, captured</h2>
+      <p><strong>$2.5B+ — half the tax, addressable today.</strong></p>
+      <ul>
+        <li><strong>TAM:</strong> $10B+ tax spend</li>
+        <li><strong>SAM:</strong> $5B+ pure tax</li>
+        <li><strong>SOM:</strong> $2.5B+ ours</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Team — three co-founders, two prior tech-cycle exits</h2>
+      <p>As Touchlab, this team sold those tools to some of the world's largest enterprises. Portive is finally the answer.</p>
+      <ul>
+        <li><strong>Jeff Namnum</strong> — CEO &amp; Co-founder. Board of Directors, Kotlin Foundation.</li>
+        <li><strong>Kevin Galligan</strong> — CTO &amp; Co-founder. Inventor of Doppl.</li>
+        <li><strong>Peter Chislett</strong> — COO &amp; Co-founder. Two tech-cycle exits: Monster (1999), Ricoh (2007).</li>
+        <li><strong>Filip Dolnik</strong> — Staff Engineer. Inventor &amp; Lead Maintainer of SKIE.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>The ask</h2>
+      <p><strong>Raising $2.5M.</strong> Land and staff 3 more enterprise pilots. Ship Platform Sync. Closing August 2026.</p>
+      <p>Contact: <strong>Jeff Namnum, CEO</strong> — <a href="mailto:jeff@portive.ai">jeff@portive.ai</a></p>
+    </section>
+  </main>
+
   <div id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" data-src-loc="208:270:530" data-om-id="5b5c8522:5">
     <rect width="600" height="600" fill="#14142B" data-src-loc="275:322" data-om-id="nc:275"></rect>
