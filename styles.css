@@ -1940,11 +1940,13 @@ body {
    DESKTOP overrides for new Change 5 blocks
    ============================================================ */
 @media (min-width: 1024px) {
-  /* Traction: three columns */
+  /* Traction: two columns (Anchor + Active pipeline), constrained + centered
+     so cards don't bloat to half-viewport on wide screens */
   .traction-row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 480px));
+    gap: 28px;
+    justify-content: center;
     align-items: stretch;
   }
   .t-card { padding: 26px 24px 24px; }
