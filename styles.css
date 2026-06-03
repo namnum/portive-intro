@@ -94,6 +94,21 @@ body {
 }
 .wordmark .dot { color: var(--accent); }
 
+/* Category claim — labels what Portive is. Bound to the wordmark as the
+   identity stamp: sits tight beneath it, muted weight/colour so it reads
+   FIRST in order without taking the H1's accent or dominance. */
+.register .wordmark:has(+ .hero-cat) { margin-bottom: 12px; }
+.hero-cat {
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  color: var(--text-grey);
+  max-width: 26ch;
+  margin-bottom: 26px;
+  text-wrap: balance;
+}
+
 .hero-hd {
   font-weight: 900;
   font-size: 34px;
@@ -314,6 +329,13 @@ body {
   text-wrap: balance;
 }
 .solution-hd em { font-style: normal; color: var(--accent-deep); }
+.solution-hd .hd-loop {
+  color: var(--accent-deep);
+  font-weight: 800;
+  font-size: 0.9em;
+  margin-right: 0.28em;
+  display: inline-block;
+}
 
 .solution-body {
   font-size: 15px;
@@ -427,6 +449,53 @@ body {
   color: var(--text-dark-body);
 }
 .em-central .em-anno .anno-body { color: var(--text-grey); }
+
+/* ---- Governance (Audit / Authority / Recovery), lifted out of the
+   process cards into a single block below the flow. Set off by a
+   dashed-accent rule so it reads as commentary, not a process step. ---- */
+.sync-gov { margin-top: 18px; }
+.sync-gov-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.sync-gov-head .gov-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(20,20,43,0.5);
+  white-space: nowrap;
+}
+.sync-gov-head .gov-rule {
+  flex: 1;
+  height: 0;
+  border-top: 1px dashed var(--rule-light);
+}
+.sync-gov-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.sync-gov .gov-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  display: block;
+}
+.sync-gov .gov-body {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-dark-body);
+  margin: 6px 0 0;
+  text-wrap: pretty;
+}
+.sync-gov .gov-body :is(b, strong) { color: var(--text-dark); font-weight: 700; }
 
 .em-arrow {
   text-align: center;
@@ -610,6 +679,38 @@ body {
 }
 .comp-body :is(b, strong) { color: var(--text-dark); font-weight: 700; }
 
+/* Pillar ownership footer (Customer owns / Portive owns) — hairline ledger.
+   Mono labels color-coded: customer = navy, Portive = accent. */
+.comp-foot {
+  margin-top: 16px;
+  border-top: 1px solid var(--rule-light);
+  padding-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.cf-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 9px;
+  align-items: baseline;
+}
+.cf-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cf-row.cf-cust .cf-key { color: var(--text-dark); }
+.cf-row.cf-port .cf-key { color: var(--accent-deep); }
+.cf-val {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-dark-body);
+}
+
 /* 3-up Compounding Advantage (mechanism + body) */
 .comps-3 {
   display: grid;
@@ -682,6 +783,9 @@ body {
 .rebuttal .strong { color: var(--text-dark); font-weight: 700; }
 
 .ip-line {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule-light);
   font-family: 'JetBrains Mono', monospace;
   font-size: 10.5px;
   color: var(--text-dark-body);
@@ -1175,6 +1279,13 @@ body {
 
   /* HERO */
   .register .wordmark { margin-bottom: 22px; font-size: 36px; }
+  .register .wordmark:has(+ .hero-cat) { margin-bottom: 14px; }
+  .hero-cat {
+    font-size: 21px;
+    line-height: 1.3;
+    max-width: 30ch;
+    margin-bottom: 30px;
+  }
   .hero-hd {
     font-size: 56px;
     max-width: 820px;
@@ -1319,10 +1430,26 @@ body {
     gap: 18px;
     align-items: stretch;
   }
-  .comps-3 .comp { padding: 24px 24px 22px; }
+  .comps-3 .comp { padding: 24px 24px 22px; display: flex; flex-direction: column; }
+  /* Push the ownership footer to the bottom so it aligns across the 3-up row. */
+  .comps-3 .comp-foot { margin-top: auto; padding-top: 14px; }
+  /* Graph card: when it stretches to match the tall first card, distribute the
+     slack between mech → graph → body (three balanced gaps) instead of leaving
+     one big void above the footer. Auto margins collapse to 0 when there's no
+     slack, so narrow/stacked layouts are unaffected. */
+  .comps-3 .comp-with-graph .tg-visual { margin-top: auto; margin-bottom: auto; }
   .comps-3 .comp-mech { font-size: 14px; line-height: 1.55; margin-bottom: 10px; }
   .comp-num { font-size: 11px; }
   .comp-name { font-size: 11.5px; letter-spacing: 0.16em; }
+  /* Narrow side columns can't hold "01 NAME" on one line for the longer
+     names — stack the number above the name so wrapped lines stay flush-left
+     instead of hanging indented under the first word. */
+  .comps-3 .comp-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 9px;
+  }
   .comp-head { margin-bottom: 9px; }
   .comp-body { font-size: 14px; line-height: 1.6; }
   .rebuttal {
@@ -1332,7 +1459,7 @@ body {
     margin: 28px 0 22px;
     max-width: 820px;
   }
-  .ip-line { font-size: 11.5px; max-width: 720px; }
+  .ip-line { font-size: 11.5px; max-width: 720px; margin-top: 32px; padding-top: 18px; }
 
   /* ROADMAP */
   .roadmap-rows {
@@ -1492,6 +1619,15 @@ body {
   .em-title { font-size: 14.5px; margin-bottom: 4px; }
   .em-central .em-title { font-size: 15.5px; }
   .em-sub { font-size: 12.5px; line-height: 1.5; }
+  /* Governance goes three-up across the full diagram width on desktop. */
+  .sync-gov { margin-top: 24px; }
+  .sync-gov-head { margin-bottom: 18px; }
+  .sync-gov-cols {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .sync-gov .gov-eyebrow { font-size: 10px; letter-spacing: 0.16em; }
+  .sync-gov .gov-body { font-size: 13px; }
 }
 
 /* ============================================================
@@ -1607,6 +1743,56 @@ body {
    TRACTION — three distinct instruments (Change 5)
    Anchor (filled) · Pipeline (outlined) · Funded by raise (tint)
    ============================================================ */
+
+/* Option B — editorial marquee for the single anchor partner.
+   Stacks on mobile; two-column on desktop (see 1024+ block). */
+.tr-marquee {
+  border-top: 2px solid var(--text-dark);
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.tr-marquee .t-tag { margin-bottom: 0; }
+.tr-l { display: flex; flex-direction: column; gap: 14px; }
+.tr-logo { height: 60px; display: flex; align-items: center; }
+.tr-logo img { height: 56px; width: auto; display: block; }
+.tr-name {
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--text-dark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.tr-r { display: flex; flex-direction: column; gap: 16px; }
+.tr-meta {
+  font-size: 14px;
+  color: var(--text-dark-body);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.tr-meta :is(b, strong) { color: var(--text-dark); font-weight: 700; }
+.tr-terms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0;
+  row-gap: 7px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dark-body);
+}
+.tr-terms span:not(:first-child)::before {
+  content: "•";
+  margin: 0 14px;
+  color: var(--accent-deep);
+  opacity: 0.75;
+  font-weight: 700;
+}
+.tr-terms b { color: var(--accent-deep); font-weight: 700; }
+
 .traction-row {
   display: flex;
   flex-direction: column;
@@ -1942,13 +2128,21 @@ body {
 @media (min-width: 1024px) {
   /* Traction: two columns (Anchor + Active pipeline), constrained + centered
      so cards don't bloat to half-viewport on wide screens */
-  .traction-row {
+  /* Traction: Option B marquee goes two-column on desktop —
+     logo/name lockup left, validation copy + terms right. */
+  .tr-marquee {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 480px));
-    gap: 28px;
-    justify-content: center;
-    align-items: stretch;
+    grid-template-columns: 1.15fr 1fr;
+    column-gap: 64px;
+    padding-top: 30px;
   }
+  .tr-l { gap: 20px; }
+  .tr-logo { height: 92px; }
+  .tr-logo img { height: 88px; }
+  .tr-name { font-size: 22px; }
+  .tr-r { justify-content: flex-end; gap: 20px; padding-bottom: 4px; }
+  .tr-meta { font-size: 17px; line-height: 1.62; }
+  .tr-terms { row-gap: 9px; font-size: 11px; }
   .t-card { padding: 26px 24px 24px; }
   .t-tag { font-size: 10.5px; letter-spacing: 0.18em; margin-bottom: 18px; }
   .t-logo { height: 84px; margin-bottom: 14px; }
@@ -2047,4 +2241,270 @@ body {
   .ask-bridge .bridge-tag { font-size: 11px; letter-spacing: 0.18em; padding-top: 4px; }
   .ask-bridge .bridge-body { font-size: 15px; line-height: 1.65; }
   .ask-close-line { font-size: 12px; padding-top: 22px; }
+}
+
+/* ============================================================
+   HERO — INLINE LOCKUP (v6)
+   Wordmark + category claim share one horizontal lockup, split by
+   a hairline rule. Appended last so it wins the specificity tie
+   against the desktop .register hero overrides above. Applies at
+   all widths; the claim stays quiet grey so the H1 keeps dominance.
+   ============================================================ */
+.v-inline .hero-lockup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-bottom: 30px;
+}
+.v-inline .hero-lockup .wordmark { margin-bottom: 0; }
+.v-inline .hero-lockup .hero-cat {
+  margin: 0;
+  padding-left: 22px;
+  border-left: 2px solid var(--rule-dark);
+  max-width: 22ch;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: var(--text-grey);
+}
+@media (min-width: 1024px) {
+  .v-inline .hero-lockup { gap: 14px 26px; margin-bottom: 34px; }
+  .v-inline .hero-lockup .hero-cat {
+    padding-left: 26px;
+    max-width: 24ch;
+    font-size: 19px;
+  }
+  /* Heritage line is the rail's sole entry now — give it the accent
+     top-border anchor the (removed) section-label used to carry, so the
+     hero rail keeps the rhythm shared by every other section. */
+  .v-inline.register > .rail-deck {
+    border-top: 2px solid var(--accent);
+    padding-top: 10px;
+    margin-top: 0;
+    align-self: start;
+  }
+}
+
+/* ============================================================
+   GO-TO-MARKET (§6.5) — names the FDE-led motion.
+   Dark inline section. The unit-economics sub-block renders the
+   two prices as an explicit sequential split (Phase 1 → Phase 2)
+   so the services-shape embed and product-shape subscription read
+   as sequential, never blurred into one offering.
+   ============================================================ */
+.gtm {
+  background: var(--bg-dark);
+  color: var(--text-white);
+  padding: 36px 24px;
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+.gtm-h1 {
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.07;
+  letter-spacing: -0.028em;
+  color: var(--text-white);
+  margin: 4px 0 18px;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.gtm-h1 em { color: var(--accent); font-style: normal; }
+.gtm-motion {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-grey);
+  max-width: 660px;
+  margin: 0 0 24px;
+  text-wrap: pretty;
+}
+.gtm-motion :is(b, strong) { color: var(--text-white); font-weight: 700; }
+.gtm-split-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin-bottom: 14px;
+}
+.gtm-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  max-width: 720px;
+}
+.gtm-stage {
+  background: var(--card-dark);
+  padding: 14px 18px 15px;
+  border-top: 2px solid var(--accent);
+}
+.gtm-phase {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.gtm-stage-name { font-size: 15.5px; font-weight: 800; color: var(--text-white); line-height: 1.2; margin-bottom: 5px; }
+.gtm-stage-meta { font-size: 12.5px; line-height: 1.5; color: var(--text-grey); }
+.gtm-conn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+.gtm-close {
+  margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-grey-2);
+  font-weight: 700;
+  line-height: 1.5;
+}
+.gtm-close :is(b, strong) { color: var(--accent); font-weight: 700; }
+
+@media (min-width: 1024px) {
+  .gtm { padding: 72px 64px; }
+  .gtm > .section-label {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    max-width: 220px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+    color: var(--accent);
+  }
+  .gtm-h1 { font-size: 38px; margin-bottom: 22px; }
+  .gtm-motion { font-size: 16px; }
+  .gtm-split { grid-template-columns: 1fr auto 1fr; gap: 0; }
+  .gtm-conn { transform: none; padding: 0 18px; font-size: 22px; }
+}
+
+/* ============================================================
+   §2 WHY NOW — thesis-led section (Alt A: expanded, open triplet)
+   Replaces the dissolved THE WORKFLOW section. Mirrors the doc's
+   rail-grid system on desktop; first-class section, no contained box.
+   ============================================================ */
+.wn {
+  padding: 36px 24px;
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+.wn .section-label { margin-bottom: 16px; }
+.wn-h1 {
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 1.08;
+  letter-spacing: -0.026em;
+  color: var(--text-white);
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+/* X-not-Y: the win reads bright, the foil reads dimmed */
+.wn-h1 .neg { color: var(--text-grey-2); }
+.wn-body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-grey);
+  margin: 0 0 22px;
+  text-wrap: pretty;
+  max-width: 660px;
+}
+.wn-body :is(b, strong) { color: var(--text-white); font-weight: 700; }
+.wn-body .neg { color: var(--text-grey-2); font-weight: 700; }
+.wn-closer {
+  color: var(--text-white);
+  text-wrap: balance;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  margin: -6px 0 24px;
+  max-width: 600px;
+}
+/* Register hinge: demoted sub-header + rule */
+.wn-hinge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 20px;
+}
+.wn-hinge .h-rule { flex: 1; height: 0; border-top: 1px solid var(--rule-dark); }
+.wn-subhead {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-white);
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+/* Beats — open, hairline-separated triplet */
+.wn .beat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 10.5px;
+  display: block;
+  margin-bottom: 7px;
+}
+.wn .beat-body { color: var(--text-grey); font-size: 13.5px; line-height: 1.55; }
+.wn .beat-body :is(b, strong) { color: var(--text-white); font-weight: 700; }
+.wn--a .beats { border-top: 1px solid var(--rule-dark); }
+.wn--a .beat {
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--rule-dark);
+}
+.wn--a .beat:last-child { border-bottom: none; padding-bottom: 0; }
+
+@media (min-width: 1024px) {
+  .wn {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    column-gap: 60px;
+    padding: 72px 64px;
+  }
+  .wn > .section-label {
+    grid-column: 1;
+    align-self: start;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    margin-bottom: 0;
+    padding-top: 10px;
+    border-top: 2px solid var(--accent);
+    max-width: 220px;
+    line-height: 1.5;
+  }
+  .wn > *:not(.section-label) { grid-column: 2; }
+  .wn-h1 { font-size: 40px; line-height: 1.04; letter-spacing: -0.03em; max-width: 820px; margin-bottom: 22px; }
+  .wn-body { font-size: 17px; line-height: 1.65; max-width: 720px; }
+  .wn-closer { font-size: 21px; max-width: 720px; }
+  .wn-subhead { font-size: 17px; }
+  .wn--a .beats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule-dark);
+  }
+  .wn--a .beat {
+    padding: 22px 26px 0;
+    border-bottom: none;
+    border-left: 1px dashed var(--rule-dark);
+  }
+  .wn--a .beat:first-child { padding-left: 0; border-left: none; }
+  .wn--a .beat:last-child { padding-right: 0; }
+  .wn--a .beat-label { font-size: 11.5px; margin-bottom: 10px; }
+  .wn--a .beat-body { font-size: 14px; line-height: 1.6; }
 }
